@@ -1,0 +1,2216 @@
+{
+  "id": "d3d4ae96-4add-4a0d-aaae-8894f407e9b3",
+  "revision": 4,
+  "last_node_id": 125,
+  "last_link_id": 140,
+  "nodes": [
+    {
+      "id": 74,
+      "type": "GetVideoComponents",
+      "pos": [
+        49.968766799087035,
+        -308.9508789943356
+      ],
+      "size": [
+        193.530859375,
+        86
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 83
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            85
+          ]
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            133
+          ]
+        },
+        {
+          "name": "fps",
+          "type": "FLOAT",
+          "links": [
+            134
+          ]
+        },
+        {
+          "name": "bit_depth",
+          "type": "INT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.0",
+        "Node name for S&R": "GetVideoComponents"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 79,
+      "type": "VHS_SelectEveryNthImage",
+      "pos": [
+        263.55392307977286,
+        -312.3924953700704
+      ],
+      "size": [
+        389.4375,
+        102
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 85
+        },
+        {
+          "name": "select_every_nth",
+          "type": "INT",
+          "widget": {
+            "name": "select_every_nth"
+          },
+          "link": 135
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            127
+          ]
+        },
+        {
+          "name": "count",
+          "type": "INT",
+          "links": [
+            87
+          ]
+        }
+      ],
+      "title": "Select Every Nth Image - N Set by Shared Interval",
+      "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
+        "ver": "4d907bee61e92c2e65af3bd6383a4e4d356126d1",
+        "Node name for S&R": "VHS_SelectEveryNthImage"
+      },
+      "widgets_values": {
+        "select_every_nth": 4,
+        "skip_first_images": 0
+      }
+    },
+    {
+      "id": 82,
+      "type": "PreviewAny",
+      "pos": [
+        600.3255048210865,
+        -300.27468365258517
+      ],
+      "size": [
+        210,
+        122
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 87
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            90
+          ]
+        }
+      ],
+      "title": "Selected Frame Count",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.0",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 80,
+      "type": "RegexReplace",
+      "pos": [
+        1033.1338673700197,
+        -676.7744289896584
+      ],
+      "size": [
+        400,
+        292
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "string",
+          "type": "STRING",
+          "widget": {
+            "name": "string"
+          },
+          "link": 102
+        },
+        {
+          "name": "replace",
+          "type": "STRING",
+          "widget": {
+            "name": "replace"
+          },
+          "link": 89
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            93
+          ]
+        }
+      ],
+      "title": "Insert Treatments",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.0",
+        "Node name for S&R": "RegexReplace"
+      },
+      "widgets_values": [
+        "",
+        "\\{FRAME_PROMPTS\\}",
+        "",
+        false,
+        false,
+        false,
+        0
+      ]
+    },
+    {
+      "id": 81,
+      "type": "RegexReplace",
+      "pos": [
+        1030.8119906689378,
+        -330.7038297881371
+      ],
+      "size": [
+        400,
+        292
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "string",
+          "type": "STRING",
+          "widget": {
+            "name": "string"
+          },
+          "link": 88
+        },
+        {
+          "name": "replace",
+          "type": "STRING",
+          "widget": {
+            "name": "replace"
+          },
+          "link": 90
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            102
+          ]
+        }
+      ],
+      "title": "Insert Count",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.0",
+        "Node name for S&R": "RegexReplace"
+      },
+      "widgets_values": [
+        "",
+        "\\{COUNT\\}",
+        "",
+        false,
+        false,
+        false,
+        0
+      ]
+    },
+    {
+      "id": 91,
+      "type": "FL_PromptMulti",
+      "pos": [
+        2345.648335589678,
+        -808.957960264441
+      ],
+      "size": [
+        400,
+        206
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "positive_text",
+          "type": "STRING",
+          "widget": {
+            "name": "positive_text"
+          },
+          "link": 101
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            129
+          ]
+        },
+        {
+          "name": "negative",
+          "shape": 6,
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "name",
+          "shape": 6,
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_fill-nodes",
+        "ver": "2.32.0",
+        "Node name for S&R": "FL_PromptMulti"
+      },
+      "widgets_values": [
+        "",
+        "",
+        "prompt_"
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    },
+    {
+      "id": 90,
+      "type": "PreviewAny",
+      "pos": [
+        1475,
+        -505
+      ],
+      "size": [
+        400,
+        300
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 93
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            100
+          ]
+        }
+      ],
+      "title": "Preview Assembled Request",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.0",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 94,
+      "type": "PreviewAny",
+      "pos": [
+        2345,
+        -520
+      ],
+      "size": [
+        460,
+        340
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 103
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "Preview Groq Prompts",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.0",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 100,
+      "type": "KSamplerSelect",
+      "pos": [
+        4600,
+        250
+      ],
+      "size": [
+        350,
+        150
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            107
+          ]
+        }
+      ],
+      "title": "Euler Sampler",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "euler"
+      ]
+    },
+    {
+      "id": 101,
+      "type": "UNETLoader",
+      "pos": [
+        3000,
+        -1050
+      ],
+      "size": [
+        350,
+        150
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            104
+          ]
+        }
+      ],
+      "title": "FLUX.2 Klein 4B Distilled - Model",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "directory": "diffusion_models",
+            "name": "flux-2-klein-4b-fp8.safetensors",
+            "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4b-fp8/resolve/main/flux-2-klein-4b-fp8.safetensors"
+          }
+        ]
+      },
+      "widgets_values": [
+        "flux-2-klein-4b-fp8.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 102,
+      "type": "CLIPLoader",
+      "pos": [
+        3000,
+        -820
+      ],
+      "size": [
+        350,
+        150
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            112
+          ]
+        }
+      ],
+      "title": "FLUX.2 - Qwen Text Encoder",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "Node name for S&R": "CLIPLoader",
+        "models": [
+          {
+            "directory": "text_encoders",
+            "name": "qwen_3_4b.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen_3_4b.safetensors",
+        "flux2",
+        "default"
+      ]
+    },
+    {
+      "id": 103,
+      "type": "VAELoader",
+      "pos": [
+        3000,
+        -590
+      ],
+      "size": [
+        350,
+        150
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            111,
+            124
+          ]
+        }
+      ],
+      "title": "FLUX.2 - VAE",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "directory": "vae",
+            "name": "flux2-vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/flux2-dev/resolve/main/split_files/vae/flux2-vae.safetensors"
+          }
+        ]
+      },
+      "widgets_values": [
+        "flux2-vae.safetensors"
+      ]
+    },
+    {
+      "id": 104,
+      "type": "EmptyFlux2LatentImage",
+      "pos": [
+        3800,
+        0
+      ],
+      "size": [
+        350,
+        150
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 115
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 117
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            109
+          ]
+        }
+      ],
+      "title": "Output Canvas - One Frame",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "Node name for S&R": "EmptyFlux2LatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 105,
+      "type": "ImageScaleToTotalPixels",
+      "pos": [
+        3410,
+        -250
+      ],
+      "size": [
+        350,
+        150
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 128
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            113,
+            123
+          ]
+        }
+      ],
+      "title": "Resize Each Frame - 1 MP",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "Node name for S&R": "ImageScaleToTotalPixels"
+      },
+      "widgets_values": [
+        "nearest-exact",
+        1,
+        1
+      ]
+    },
+    {
+      "id": 106,
+      "type": "Flux2Scheduler",
+      "pos": [
+        4200,
+        0
+      ],
+      "size": [
+        350,
+        150
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 114
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 116
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            108
+          ]
+        }
+      ],
+      "title": "FLUX.2 Schedule - 4 Steps",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "Node name for S&R": "Flux2Scheduler"
+      },
+      "widgets_values": [
+        4,
+        1024,
+        1024
+      ]
+    },
+    {
+      "id": 107,
+      "type": "CLIPTextEncode",
+      "pos": [
+        3410,
+        -1050
+      ],
+      "size": [
+        350,
+        250
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 112
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 129
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            118,
+            121
+          ]
+        }
+      ],
+      "title": "Encode Frame Prompt",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 108,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        3800,
+        -750
+      ],
+      "size": [
+        350,
+        150
+      ],
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 118
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            122
+          ]
+        }
+      ],
+      "title": "Zero Negative Conditioning",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.9.1",
+        "Node name for S&R": "ConditioningZeroOut"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 109,
+      "type": "ReferenceLatent",
+      "pos": [
+        4200,
+        -750
+      ],
+      "size": [
+        350,
+        150
+      ],
+      "flags": {},
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 122
+        },
+        {
+          "name": "latent",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 119
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            126
+          ]
+        }
+      ],
+      "title": "Negative Reference",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "Node name for S&R": "ReferenceLatent"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 110,
+      "type": "GetImageSize",
+      "pos": [
+        3410,
+        0
+      ],
+      "size": [
+        350,
+        150
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 113
+        }
+      ],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            114,
+            115
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            116,
+            117
+          ]
+        },
+        {
+          "name": "batch_size",
+          "type": "INT",
+          "links": []
+        }
+      ],
+      "title": "Frame Dimensions",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "Node name for S&R": "GetImageSize"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 111,
+      "type": "ReferenceLatent",
+      "pos": [
+        4200,
+        -1050
+      ],
+      "size": [
+        350,
+        150
+      ],
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 121
+        },
+        {
+          "name": "latent",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 120
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            125
+          ]
+        }
+      ],
+      "title": "Positive Reference",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "Node name for S&R": "ReferenceLatent"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 112,
+      "type": "VAEEncode",
+      "pos": [
+        3800,
+        -250
+      ],
+      "size": [
+        350,
+        150
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 123
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 124
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            119,
+            120
+          ]
+        }
+      ],
+      "title": "Encode Source Frame",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "Node name for S&R": "VAEEncode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 113,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        5000,
+        -650
+      ],
+      "size": [
+        380,
+        320
+      ],
+      "flags": {},
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 105
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 106
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 107
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 108
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 109
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            110
+          ]
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": []
+        }
+      ],
+      "title": "Edit Each Frame",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "Node name for S&R": "SamplerCustomAdvanced"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 114,
+      "type": "VAEDecode",
+      "pos": [
+        5450,
+        -650
+      ],
+      "size": [
+        350,
+        150
+      ],
+      "flags": {},
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 110
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 111
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            130,
+            131
+          ]
+        }
+      ],
+      "title": "Decode Edited Frame",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 115,
+      "type": "RandomNoise",
+      "pos": [
+        4600,
+        0
+      ],
+      "size": [
+        350,
+        150
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            105
+          ]
+        }
+      ],
+      "title": "Fixed Noise - Seed 42",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "Node name for S&R": "RandomNoise"
+      },
+      "widgets_values": [
+        42,
+        "fixed"
+      ]
+    },
+    {
+      "id": 116,
+      "type": "CFGGuider",
+      "pos": [
+        4600,
+        -850
+      ],
+      "size": [
+        350,
+        150
+      ],
+      "flags": {},
+      "order": 32,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 104
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 125
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 126
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            106
+          ]
+        }
+      ],
+      "title": "CFG Guider - 1.0",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.8.2",
+        "Node name for S&R": "CFGGuider"
+      },
+      "widgets_values": [
+        1
+      ]
+    },
+    {
+      "id": 117,
+      "type": "TS_ImageBatchToImageList",
+      "pos": [
+        3000,
+        -250
+      ],
+      "size": [
+        300,
+        90
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 127
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": [
+            128
+          ]
+        }
+      ],
+      "title": "Frames to Individual Images",
+      "properties": {
+        "cnr_id": "comfyui-timesaver",
+        "ver": "92424f01e1aa01a1904663dbf76e6e295a074e0a",
+        "Node name for S&R": "TS_ImageBatchToImageList"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 118,
+      "type": "PreviewImage",
+      "pos": [
+        5850,
+        -650
+      ],
+      "size": [
+        480,
+        500
+      ],
+      "flags": {},
+      "order": 35,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 130
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "title": "Preview Edited Frames",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.0",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 119,
+      "type": "TS_ImageListToImageBatch",
+      "pos": [
+        6420,
+        -650
+      ],
+      "size": [
+        340,
+        100
+      ],
+      "flags": {},
+      "order": 36,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 131
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            132
+          ]
+        }
+      ],
+      "title": "Collect Edited Frames in Order",
+      "properties": {
+        "cnr_id": "comfyui-timesaver",
+        "ver": "92424f01e1aa01a1904663dbf76e6e295a074e0a",
+        "Node name for S&R": "TS_ImageListToImageBatch"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 120,
+      "type": "INTConstant",
+      "pos": [
+        6420,
+        0
+      ],
+      "size": [
+        320,
+        100
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "INT",
+          "links": [
+            135,
+            136
+          ]
+        }
+      ],
+      "title": "Frame Selection Interval - Shared N",
+      "properties": {
+        "cnr_id": "comfyui-kjnodes",
+        "ver": "9ee404dcaaa6409fe3d4738fd47ac971f1f0bebb",
+        "Node name for S&R": "INTConstant"
+      },
+      "widgets_values": [
+        4
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 121,
+      "type": "ComfyMathExpression",
+      "pos": [
+        6800,
+        0
+      ],
+      "size": [
+        380,
+        180
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "a",
+          "name": "values.a",
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 134
+        },
+        {
+          "label": "b",
+          "name": "values.b",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 136
+        },
+        {
+          "label": "c",
+          "name": "values.c",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            137,
+            139
+          ]
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": []
+        },
+        {
+          "name": "BOOL",
+          "type": "BOOLEAN",
+          "links": []
+        }
+      ],
+      "title": "Output FPS = Source FPS / N",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.0",
+        "Node name for S&R": "ComfyMathExpression"
+      },
+      "widgets_values": [
+        "a / b"
+      ]
+    },
+    {
+      "id": 122,
+      "type": "CreateVideo",
+      "pos": [
+        6830,
+        -650
+      ],
+      "size": [
+        380,
+        160
+      ],
+      "flags": {},
+      "order": 37,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 132
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 133
+        },
+        {
+          "name": "fps",
+          "type": "FLOAT",
+          "widget": {
+            "name": "fps"
+          },
+          "link": 137
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            138
+          ]
+        }
+      ],
+      "title": "Reassemble Video with Original Audio",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.0",
+        "Node name for S&R": "CreateVideo"
+      },
+      "widgets_values": [
+        8,
+        8
+      ]
+    },
+    {
+      "id": 124,
+      "type": "PreviewAny",
+      "pos": [
+        7260,
+        0
+      ],
+      "size": [
+        320,
+        160
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 139
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "Preview Output FPS",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.0",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 125,
+      "type": "PreviewAny",
+      "pos": [
+        2345,
+        -100
+      ],
+      "size": [
+        540,
+        300
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 140
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "Groq Status - Read This if Prompts Are Empty",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.0",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 93,
+      "type": "GroqNode",
+      "pos": [
+        1923.9972894609111,
+        -983.9991488746786
+      ],
+      "size": [
+        400,
+        596
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image_input",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "system_prompt"
+          },
+          "link": 99
+        },
+        {
+          "name": "user_prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "user_prompt"
+          },
+          "link": 100
+        }
+      ],
+      "outputs": [
+        {
+          "name": "response",
+          "type": "STRING",
+          "links": [
+            101,
+            103
+          ]
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": [
+            140
+          ]
+        },
+        {
+          "name": "help",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "eacloudnodes",
+        "ver": "2.2.2",
+        "Node name for S&R": "GroqNode"
+      },
+      "widgets_values": [
+        "",
+        "openai/gpt-oss-120b",
+        "",
+        "You write image-editing prompts for individual video frames.\n\nReturn exactly the requested number of nonempty lines.\nEach line must contain one complete prompt of 35 to 55 words.\nDo not include headings, numbering, bullets, quotation marks, Markdown, code fences, or commentary.\n\nFollow the supplied visual treatment consistently for every frame.\nRefer to the input image as \"the source frame\".\nDescribe only the requested visual treatment.\nDo not invent people, objects, actions, or locations.\nIn every prompt, instruct the image editor to preserve the source frame's subject, pose, camera viewpoint, composition, and scene geometry.",
+        "",
+        "yes",
+        0.2,
+        0.95,
+        4096,
+        0,
+        0,
+        "text",
+        "fixed",
+        42,
+        3,
+        "off",
+        "png",
+        ""
+      ]
+    },
+    {
+      "id": 123,
+      "type": "SaveVideo",
+      "pos": [
+        7260,
+        -650
+      ],
+      "size": [
+        480,
+        130
+      ],
+      "flags": {},
+      "order": 38,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 138
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": null
+        }
+      ],
+      "title": "Save Final MP4 - H.264 + Source Audio",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.0",
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "video/SpiderVerse",
+        "mp4",
+        "h264",
+        "auto"
+      ]
+    },
+    {
+      "id": 92,
+      "type": "StringConstantMultiline",
+      "pos": [
+        1025.4919741164201,
+        -947.2887519420835
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            99
+          ]
+        }
+      ],
+      "title": "System prompt (String Constant Multiline)",
+      "properties": {
+        "cnr_id": "comfyui-kjnodes",
+        "ver": "9ee404dcaaa6409fe3d4738fd47ac971f1f0bebb",
+        "Node name for S&R": "StringConstantMultiline"
+      },
+      "widgets_values": [
+        "You write image-editing prompts for individual video frames.\n\nReturn exactly the requested number of nonempty lines.\nEach line must contain one complete prompt of 35 to 55 words.\nDo not include headings, numbering, bullets, quotation marks, Markdown, code fences, or commentary.\n\nFollow the supplied visual treatment consistently for every frame.\nRefer to the input image as \"the source frame\".\nDescribe only the requested visual treatment.\nDo not invent people, objects, actions, or locations.\nIn every prompt, instruct the image editor to preserve the source frame's subject, pose, camera viewpoint, composition, and scene geometry.",
+        false
+      ]
+    },
+    {
+      "id": 84,
+      "type": "StringConstantMultiline",
+      "pos": [
+        563.2519150192626,
+        -934.8866335621808
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            89
+          ]
+        }
+      ],
+      "title": "STYLE TREATMENT - Replace This Text",
+      "properties": {
+        "cnr_id": "comfyui-kjnodes",
+        "ver": "9ee404dcaaa6409fe3d4738fd47ac971f1f0bebb",
+        "Node name for S&R": "StringConstantMultiline"
+      },
+      "widgets_values": [
+        "Restyle the source frame in the visual style of Spider-Man: Into the Spider-Verse. Combine stylized 3D forms with hand-drawn comic-book outlines, halftone dots, crosshatching, bold cel shading, textured printed-paper surfaces, vibrant cyan and magenta accents, subtle offset colour edges, and dramatic graphic lighting. Preserve the original people, facial identity, clothing, poses, camera viewpoint, composition, and object positions. Add no superheroes, costumes, text, or new objects.",
+        false
+      ]
+    },
+    {
+      "id": 85,
+      "type": "StringConstantMultiline",
+      "pos": [
+        555.6736984538122,
+        -680.7729054649997
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            88
+          ]
+        }
+      ],
+      "title": "Prompt Template (String Constant Multiline)",
+      "properties": {
+        "cnr_id": "comfyui-kjnodes",
+        "ver": "9ee404dcaaa6409fe3d4738fd47ac971f1f0bebb",
+        "Node name for S&R": "StringConstantMultiline"
+      },
+      "widgets_values": [
+        "Create exactly {COUNT} style-transfer prompts, one per selected video frame.\n\nApply this same visual treatment consistently throughout the video:\n{FRAME_PROMPTS}\n\nEach output line must be a complete image-editing instruction referring to the source frame. Preserve the subject, pose, camera viewpoint, composition, object positions, and scene geometry. Keep the style consistent across all lines; do not cycle through different looks.\n\nReturn only the finished prompts, one nonempty prompt per line, without headings, numbering, bullets, JSON, or code fences.",
+        false
+      ]
+    },
+    {
+      "id": 73,
+      "type": "LoadVideo",
+      "pos": [
+        -318.3416015625,
+        -537.2766319444445
+      ],
+      "size": [
+        282.798828125,
+        233.0743408203125
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            83
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.0",
+        "Node name for S&R": "LoadVideo"
+      },
+      "widgets_values": [
+        "input.mp4",
+        "image"
+      ]
+    }
+  ],
+  "links": [
+    [
+      83,
+      73,
+      0,
+      74,
+      0,
+      "VIDEO"
+    ],
+    [
+      85,
+      74,
+      0,
+      79,
+      0,
+      "IMAGE"
+    ],
+    [
+      87,
+      79,
+      1,
+      82,
+      0,
+      "INT"
+    ],
+    [
+      88,
+      85,
+      0,
+      81,
+      0,
+      "STRING"
+    ],
+    [
+      90,
+      82,
+      0,
+      81,
+      1,
+      "STRING"
+    ],
+    [
+      102,
+      81,
+      0,
+      80,
+      0,
+      "STRING"
+    ],
+    [
+      89,
+      84,
+      0,
+      80,
+      1,
+      "STRING"
+    ],
+    [
+      93,
+      80,
+      0,
+      90,
+      0,
+      "STRING"
+    ],
+    [
+      99,
+      92,
+      0,
+      93,
+      1,
+      "STRING"
+    ],
+    [
+      100,
+      90,
+      0,
+      93,
+      2,
+      "STRING"
+    ],
+    [
+      101,
+      93,
+      0,
+      91,
+      0,
+      "STRING"
+    ],
+    [
+      103,
+      93,
+      0,
+      94,
+      0,
+      "STRING"
+    ],
+    [
+      104,
+      101,
+      0,
+      116,
+      0,
+      "MODEL"
+    ],
+    [
+      105,
+      115,
+      0,
+      113,
+      0,
+      "NOISE"
+    ],
+    [
+      106,
+      116,
+      0,
+      113,
+      1,
+      "GUIDER"
+    ],
+    [
+      107,
+      100,
+      0,
+      113,
+      2,
+      "SAMPLER"
+    ],
+    [
+      108,
+      106,
+      0,
+      113,
+      3,
+      "SIGMAS"
+    ],
+    [
+      109,
+      104,
+      0,
+      113,
+      4,
+      "LATENT"
+    ],
+    [
+      110,
+      113,
+      0,
+      114,
+      0,
+      "LATENT"
+    ],
+    [
+      111,
+      103,
+      0,
+      114,
+      1,
+      "VAE"
+    ],
+    [
+      112,
+      102,
+      0,
+      107,
+      0,
+      "CLIP"
+    ],
+    [
+      113,
+      105,
+      0,
+      110,
+      0,
+      "IMAGE"
+    ],
+    [
+      114,
+      110,
+      0,
+      106,
+      0,
+      "INT"
+    ],
+    [
+      115,
+      110,
+      0,
+      104,
+      0,
+      "INT"
+    ],
+    [
+      116,
+      110,
+      1,
+      106,
+      1,
+      "INT"
+    ],
+    [
+      117,
+      110,
+      1,
+      104,
+      1,
+      "INT"
+    ],
+    [
+      118,
+      107,
+      0,
+      108,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      119,
+      112,
+      0,
+      109,
+      1,
+      "LATENT"
+    ],
+    [
+      120,
+      112,
+      0,
+      111,
+      1,
+      "LATENT"
+    ],
+    [
+      121,
+      107,
+      0,
+      111,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      122,
+      108,
+      0,
+      109,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      123,
+      105,
+      0,
+      112,
+      0,
+      "IMAGE"
+    ],
+    [
+      124,
+      103,
+      0,
+      112,
+      1,
+      "VAE"
+    ],
+    [
+      125,
+      111,
+      0,
+      116,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      126,
+      109,
+      0,
+      116,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      127,
+      79,
+      0,
+      117,
+      0,
+      "IMAGE"
+    ],
+    [
+      128,
+      117,
+      0,
+      105,
+      0,
+      "IMAGE"
+    ],
+    [
+      129,
+      91,
+      0,
+      107,
+      1,
+      "STRING"
+    ],
+    [
+      130,
+      114,
+      0,
+      118,
+      0,
+      "IMAGE"
+    ],
+    [
+      131,
+      114,
+      0,
+      119,
+      0,
+      "IMAGE"
+    ],
+    [
+      132,
+      119,
+      0,
+      122,
+      0,
+      "IMAGE"
+    ],
+    [
+      133,
+      74,
+      1,
+      122,
+      1,
+      "AUDIO"
+    ],
+    [
+      134,
+      74,
+      2,
+      121,
+      0,
+      "FLOAT"
+    ],
+    [
+      135,
+      120,
+      0,
+      79,
+      1,
+      "INT"
+    ],
+    [
+      136,
+      120,
+      0,
+      121,
+      1,
+      "INT"
+    ],
+    [
+      137,
+      121,
+      0,
+      122,
+      2,
+      "FLOAT"
+    ],
+    [
+      138,
+      122,
+      0,
+      123,
+      0,
+      "VIDEO"
+    ],
+    [
+      139,
+      121,
+      0,
+      124,
+      0,
+      "FLOAT"
+    ],
+    [
+      140,
+      93,
+      1,
+      125,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "FLUX.2 Klein 4B Distilled - Frame Editing",
+      "bounding": [
+        2920,
+        -1150,
+        3480,
+        1750
+      ],
+      "color": "#65527e",
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Video Reassembly - Automatic FPS - Original Audio - MP4",
+      "bounding": [
+        6350,
+        -780,
+        1450,
+        1050
+      ],
+      "color": "#337c68",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
